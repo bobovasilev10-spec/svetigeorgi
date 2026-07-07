@@ -1,0 +1,960 @@
+<!doctype html>
+<html lang="bg">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>За къщата — Къща за гости Свети Георги</title>
+  <meta name="description" content="Къща за гости Свети Георги в село Тъжа — уют, простор, басейни и спокойствие сред природата на Стара планина.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="homepage.css">
+
+  <style>
+    .page-hero {
+      min-height: 68vh;
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+      padding: 0;
+      background: #0e1d16;
+      color: #fff;
+    }
+
+    .page-hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(8,18,13,.88), rgba(8,18,13,.36) 52%, rgba(8,18,13,.68)),
+        url('images/img_3005.jpg') center / cover no-repeat;
+      transform: scale(1.03);
+    }
+
+    .page-hero::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0 0;
+      height: 44%;
+      background: linear-gradient(to top, rgba(0,0,0,.72), transparent);
+    }
+
+    .page-hero-inner {
+      position: relative;
+      z-index: 2;
+      padding: 190px 0 86px;
+    }
+
+    .page-hero h1 {
+      max-width: 980px;
+      margin: 0;
+      font-size: clamp(58px, 8vw, 112px);
+      line-height: .88;
+      color: #fff;
+    }
+
+    .page-hero .lead {
+      max-width: 720px;
+      margin-top: 28px;
+    }
+
+    .about-section {
+      padding: 112px 0;
+      background: var(--paper);
+    }
+
+    .about-section.alt {
+      background: var(--bg);
+    }
+
+    .story-grid {
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      gap: 78px;
+      align-items: start;
+    }
+
+    .story-title {
+      position: sticky;
+      top: 110px;
+    }
+
+    .story-title p {
+      max-width: 420px;
+      margin: 26px 0 0;
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    .story-visual {
+      min-height: 460px;
+      margin-bottom: 38px;
+      background: url('images/img_3005.jpg') center / cover no-repeat;
+      box-shadow: var(--shadow);
+    }
+
+    .story-card {
+      padding: 54px;
+      background: rgba(255,250,243,.9);
+      border-left: 4px solid var(--gold);
+      box-shadow: 0 22px 70px rgba(13,29,22,.08);
+    }
+
+    .story-card p {
+      margin: 0 0 24px;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.8;
+    }
+
+    .story-card p:last-child {
+      margin-bottom: 0;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 58px;
+    }
+
+    .feature-card {
+      min-height: 230px;
+      padding: 34px;
+      position: relative;
+      overflow: hidden;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      box-shadow: 0 16px 45px rgba(13,29,22,.06);
+    }
+
+    .feature-card::after {
+      content: "";
+      position: absolute;
+      right: -36px;
+      bottom: -36px;
+      width: 120px;
+      height: 120px;
+      border-radius: 999px;
+      background: rgba(189,140,74,.12);
+    }
+
+    .feature-icon {
+      width: 52px;
+      height: 52px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 28px;
+      border-radius: 999px;
+      background: var(--forest);
+      color: #fff;
+      font-size: 24px;
+    }
+
+    .feature-card h3 {
+      margin: 0 0 10px;
+      color: var(--forest);
+      font-size: 34px;
+    }
+
+    .feature-card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .wide-photo {
+      min-height: 560px;
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+      padding: 0;
+      background:
+        linear-gradient(to top, rgba(8,18,13,.82), rgba(8,18,13,.18)),
+        url('images/img_3005.jpg') center / cover no-repeat;
+      color: #fff;
+    }
+
+    .wide-photo-content {
+      padding: 90px 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .wide-photo h2 {
+      max-width: 760px;
+      color: #fff;
+    }
+
+    .wide-photo p {
+      max-width: 680px;
+      margin: 24px 0 0;
+      color: rgba(255,255,255,.78);
+      font-size: 20px;
+    }
+
+    .house-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 70px;
+      align-items: center;
+    }
+
+    .house-photo-stack {
+      min-height: 580px;
+      position: relative;
+    }
+
+    .house-photo-main,
+    .house-photo-small {
+      position: absolute;
+      background: url('images/img_3005.jpg') center / cover no-repeat;
+      box-shadow: var(--shadow);
+    }
+
+    .house-photo-main {
+      left: 0;
+      top: 0;
+      width: 78%;
+      height: 520px;
+    }
+
+    .house-photo-small {
+      right: 0;
+      bottom: 0;
+      width: 48%;
+      height: 300px;
+      border: 12px solid var(--bg);
+    }
+
+    .check-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 34px;
+    }
+
+    .check-item {
+      padding: 18px 20px;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      color: var(--forest);
+      font-weight: 800;
+    }
+
+    .check-item::before {
+      content: "✓";
+      color: var(--gold);
+      margin-right: 10px;
+    }
+
+    .about-cta {
+      padding: 112px 0;
+      background:
+        linear-gradient(rgba(14,29,22,.84), rgba(14,29,22,.84)),
+        url('images/img_3005.jpg') center / cover no-repeat;
+      color: #fff;
+      text-align: center;
+    }
+
+    .about-cta h2 {
+      max-width: 820px;
+      margin: auto;
+      color: #fff;
+    }
+
+    .about-cta p {
+      max-width: 680px;
+      margin: 24px auto 36px;
+      color: rgba(255,255,255,.78);
+      font-size: 20px;
+    }
+
+    @media (max-width: 980px) {
+      .story-grid,
+      .house-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .story-title {
+        position: static;
+      }
+
+      .feature-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .page-hero-inner {
+        padding: 140px 0 64px;
+      }
+
+      .page-hero h1 {
+        font-size: 54px;
+      }
+
+      .about-section {
+        padding: 76px 0;
+      }
+
+      .story-card {
+        padding: 32px;
+      }
+
+      .story-visual {
+        min-height: 340px;
+      }
+
+      .feature-grid,
+      .check-list {
+        grid-template-columns: 1fr;
+      }
+
+      .house-photo-stack {
+        min-height: 430px;
+      }
+
+      .house-photo-main {
+        width: 88%;
+        height: 380px;
+      }
+
+      .house-photo-small {
+        width: 62%;
+        height: 210px;
+      }
+    }
+
+
+    .page-hero {
+  height: 690px;
+  min-height: 690px;
+  display: block;
+}
+
+.page-hero-inner {
+  position: absolute;
+  left: 50%;
+  top: 190px;
+  transform: translateX(-50%);
+  z-index: 2;
+
+  width: min(1180px, calc(100% - 42px));
+  padding: 0;
+}
+
+.page-hero h1 {
+  max-width: 900px;
+  margin: 0;
+
+  font-size: clamp(54px, 6.3vw, 96px);
+  line-height: .9;
+}
+
+.page-hero .lead {
+  max-width: 720px;
+  margin-top: 26px;
+}
+  
+
+/* =========================================================
+   Mobile fixes - added inside page
+   Mobile-only overrides. Desktop layout remains unchanged.
+   ========================================================= */
+
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+@media (max-width: 980px) {
+  .topbar {
+    position: relative;
+    background: rgba(9, 18, 14, .96);
+  }
+
+  header {
+    position: absolute;
+    top: 46px;
+  }
+
+  .nav {
+    height: auto;
+    min-height: 86px;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 12px 0;
+  }
+
+  .logo img {
+    height: 54px;
+  }
+
+  .menu {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    gap: 12px;
+    overflow-x: auto;
+    padding: 8px 0 2px;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .menu::-webkit-scrollbar {
+    display: none;
+  }
+
+  .menu a {
+    flex: 0 0 auto;
+    white-space: nowrap;
+    padding: 8px 12px;
+    border: 1px solid rgba(255,255,255,.18);
+    border-radius: 999px;
+    background: rgba(255,255,255,.06);
+  }
+
+  .hero,
+  .page-hero {
+    height: auto !important;
+    min-height: auto !important;
+    display: block !important;
+    overflow: hidden !important;
+  }
+
+  .hero {
+    padding: 0 0 42px !important;
+  }
+
+  .hero-inner,
+  .page-hero-inner {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    transform: none !important;
+    width: min(1180px, calc(100% - 32px)) !important;
+    min-height: auto !important;
+    height: auto !important;
+    padding: 190px 0 56px !important;
+    margin: 0 auto !important;
+    display: block !important;
+  }
+
+  .hero-copy {
+    max-width: 100% !important;
+  }
+
+  .reservation-box {
+    position: relative !important;
+    right: auto !important;
+    top: auto !important;
+    width: 100% !important;
+    max-width: 680px !important;
+    margin: 30px 0 0 !important;
+  }
+
+  .reservation-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .section-head,
+  .intro-grid,
+  .story-grid,
+  .house-grid,
+  .intro-layout,
+  .contact-layout,
+  .inquiry-layout,
+  .gallery-intro-layout,
+  .strip-head,
+  .gallery-cta-panel,
+  .location-intro-grid,
+  .route-layout,
+  .map-panel,
+  .cta-panel {
+    grid-template-columns: 1fr !important;
+    gap: 34px !important;
+  }
+
+  .feature-grid,
+  .premium-grid,
+  .house-facts,
+  .featured-grid,
+  .masonry-gallery,
+  .attraction-grid,
+  .nearby,
+  .room-grid,
+  .amenities,
+  .facts,
+  .foot {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .attraction-card.large,
+  .attraction-card.medium,
+  .attraction-card.wide,
+  .attraction-card.small-wide {
+    grid-column: auto !important;
+    min-height: 380px !important;
+  }
+
+  .story-title {
+    position: static !important;
+  }
+
+  .contact-panel,
+  .map-panel,
+  .map-panel iframe,
+  .location-map,
+  .location-map iframe {
+    min-height: 460px !important;
+  }
+
+  .cta-panel-actions,
+  .gallery-cta-actions {
+    justify-content: flex-start !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .topbar {
+    display: none !important;
+  }
+
+  header {
+    top: 0 !important;
+  }
+
+  .wrap,
+  .hero-inner,
+  .page-hero-inner {
+    width: min(100% - 28px, 1180px) !important;
+  }
+
+  .nav {
+    min-height: 72px !important;
+    padding: 10px 0 !important;
+  }
+
+  .logo img {
+    height: 48px !important;
+  }
+
+  .menu {
+    gap: 8px !important;
+    padding-top: 6px !important;
+  }
+
+  .menu a {
+    padding: 7px 10px !important;
+    font-size: 10px !important;
+    letter-spacing: .09em !important;
+  }
+
+  .hero-inner,
+  .page-hero-inner {
+    padding: 132px 0 46px !important;
+  }
+
+  h1,
+  .page-hero h1 {
+    max-width: 100% !important;
+    font-size: clamp(42px, 13.5vw, 56px) !important;
+    line-height: .92 !important;
+  }
+
+  h2,
+  .contact-panel h2,
+  .whole-house h2,
+  .location-title {
+    font-size: clamp(36px, 11vw, 48px) !important;
+    line-height: .96 !important;
+  }
+
+  .lead,
+  .page-hero .lead,
+  .section-head p,
+  .intro-layout p,
+  .gallery-intro p,
+  .strip-head p,
+  .location-intro p,
+  .route-content p,
+  .contact-panel p,
+  .inquiry-copy p,
+  .whole-house p,
+  .cta-panel p,
+  .gallery-cta-panel p {
+    font-size: 16px !important;
+  }
+
+  section,
+  .about-section,
+  .page-intro,
+  .stay-options,
+  .amenity-strip,
+  .reservation-cta,
+  .contact-main,
+  .inquiry-section,
+  .contact-cta,
+  .gallery-intro,
+  .featured-gallery,
+  .gallery-strip,
+  .gallery-cta,
+  .location-intro,
+  .attractions,
+  .route-section,
+  .map-section,
+  .location-cta,
+  .whole-house,
+  .about-cta {
+    padding-top: 68px !important;
+    padding-bottom: 68px !important;
+  }
+
+  .reservation-box,
+  .text-card,
+  .story-card,
+  .stay-content,
+  .contact-form,
+  .contact-panel,
+  .cta-panel,
+  .gallery-cta-panel,
+  .map-text {
+    padding: 26px 20px !important;
+  }
+
+  .reservation-grid,
+  .form-grid,
+  .feature-grid,
+  .premium-grid,
+  .house-facts,
+  .featured-grid,
+  .masonry-gallery,
+  .attraction-grid,
+  .nearby,
+  .room-grid,
+  .amenities,
+  .facts,
+  .check-list,
+  .foot,
+  .gallery {
+    grid-template-columns: 1fr !important;
+  }
+
+  .reservation-bottom,
+  .form-bottom,
+  .cta-panel-actions,
+  .gallery-cta-actions,
+  .contact-actions,
+  .hero-actions {
+    align-items: stretch !important;
+    flex-direction: column !important;
+  }
+
+  .reservation-bottom button,
+  .form-bottom button,
+  .btn {
+    width: 100% !important;
+  }
+
+  .direct-phone,
+  .form-note {
+    text-align: left !important;
+  }
+
+  .photo-stack,
+  .house-photo-stack {
+    min-height: 360px !important;
+  }
+
+  .photo-main,
+  .house-photo-main {
+    width: 88% !important;
+    height: 310px !important;
+  }
+
+  .photo-small,
+  .house-photo-small {
+    width: 62% !important;
+    height: 180px !important;
+    border-width: 8px !important;
+  }
+
+  .story-visual,
+  .stay-image,
+  .route-image,
+  .location-map,
+  .location-map iframe,
+  .map-panel iframe,
+  .contact-panel,
+  .map-panel {
+    min-height: 320px !important;
+  }
+
+  .stay-image {
+    aspect-ratio: 4 / 3 !important;
+  }
+
+  .gallery,
+  .featured-grid,
+  .masonry-gallery {
+    grid-auto-rows: 250px !important;
+  }
+
+  .gallery div,
+  .gallery-tile,
+  .masonry-gallery .gallery-tile {
+    min-height: 250px !important;
+  }
+
+  .attraction-card.large,
+  .attraction-card.medium,
+  .attraction-card.wide,
+  .attraction-card.small-wide {
+    grid-column: 1 / -1 !important;
+    min-height: 320px !important;
+    padding: 24px !important;
+  }
+
+  .map-card,
+  .map-note {
+    position: static !important;
+    margin: 0 !important;
+  }
+
+  .map-card {
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+  }
+
+  .room-img {
+    height: 240px !important;
+  }
+
+  .room-body,
+  .feature-card,
+  .premium-box,
+  .house-fact,
+  .fact {
+    padding: 24px 20px !important;
+  }
+
+  .eyebrow {
+    gap: 10px !important;
+    font-size: 10px !important;
+    letter-spacing: .16em !important;
+  }
+
+  .eyebrow::before {
+    width: 36px !important;
+  }
+}
+
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="wrap">
+      <span>с. Тъжа · Стара планина</span>
+      <a href="tel:+359879255757">+359 87 925 5757</a>
+    </div>
+  </div>
+
+  <header>
+    <div class="wrap nav">
+      <a class="logo" href="index.html">
+        <img src="images/LOGO.webp" alt="Къща за гости Свети Георги">
+      </a>
+      <button class="menu-toggle" type="button" aria-label="Отвори меню" aria-expanded="false"><span></span><span></span><span></span></button>
+    <nav class="menu">
+        <a href="about.html">За къщата</a>
+        <a href="accommodation.html">Настаняване</a>
+        <a href="gallery.html">Галерия</a>
+        <a href="location.html">Местността</a>
+        <a href="contacts.html">Контакти</a>
+      </nav>
+      
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="wrap page-hero-inner">
+        <div class="eyebrow">За къщата</div>
+        <h1 class="serif">Домашен уют сред красотата на Балкана.</h1>
+        <p class="lead">Къща за гости Свети Георги е място за спокойни почивки, семейни събирания и уикенди сред природата на Стара планина.</p>
+      </div>
+    </section>
+
+    <section class="about-section">
+      <div class="wrap story-grid">
+        <div class="story-title">
+          <div class="kicker">История и атмосфера</div>
+          <h2 class="serif">Място за истинска почивка.</h2>
+          <p>Тук фокусът е върху спокойствието, простора и усещането за бавен уикенд далеч от шума.</p>
+        </div>
+
+        <div>
+          <div class="story-visual"></div>
+          <div class="story-card">
+            <p>Къща за гости „Свети Георги“ е идеалното място за една пълноценна почивка сред несравнимата красота на Стара планина. Сред очарованието на Балкана ще намерите тишината, уюта и спокойствието, от което се нуждаете.</p>
+            <p>В района можете да се насладите на чист планински въздух, зеленина и красиви места за разходка, включително водопадите „Пръскалото“ и „Търниченско пръскало“.</p>
+            <p>Къщата е подходяща както за семейни почивки, така и за компании, които търсят удобно място за споделено време сред природата.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="about-section alt">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Удобства</div>
+            <h2 class="serif">Всичко нужно за спокоен престой.</h2>
+          </div>
+          <p>Съчетание от уютни помещения, външни пространства и планинска атмосфера, които правят престоя лек и приятен.</p>
+        </div>
+
+        <div class="feature-grid">
+          <article class="feature-card">
+            <div class="feature-icon">🏊</div>
+            <h3 class="serif">Басейни</h3>
+            <p>Два кристално чисти басейна — един за възрастни и специален басейн за деца.</p>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-icon">🍽</div>
+            <h3 class="serif">Трапезария</h3>
+            <p>Удобно пространство за вечери, празници и събирания с близки хора.</p>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-icon">⛰</div>
+            <h3 class="serif">Гледки</h3>
+            <p>Панорамни гледки към Стара планина, връх Триглав и връх Ботев.</p>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-icon">🔥</div>
+            <h3 class="serif">Топлина</h3>
+            <p>Всички стаи се отопляват с котел на пелети за комфорт през студените месеци.</p>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-icon">🌿</div>
+            <h3 class="serif">Двор</h3>
+            <p>Зелен двор, чист въздух и място за отдих на открито.</p>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-icon">🏡</div>
+            <h3 class="serif">Цяла къща</h3>
+            <p>Подходяща за семейства и компании, които искат самостоятелност и спокойствие.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="wide-photo">
+      <div class="wrap wide-photo-content">
+        <div class="kicker">Планинско усещане</div>
+        <h2 class="serif">Сутрини с чист въздух и вечери под открито небе.</h2>
+        <p>Престоят тук е създаден за хора, които искат да забавят темпото, да прекарат време заедно и да се насладят на природата.</p>
+      </div>
+    </section>
+
+    <section class="about-section alt">
+      <div class="wrap house-grid">
+        <div class="house-photo-stack">
+          <div class="house-photo-main"></div>
+          <div class="house-photo-small"></div>
+        </div>
+
+        <div>
+          <div class="kicker">Разпределение</div>
+          <h2 class="serif">Удобно пространство за цялата компания.</h2>
+          <p class="lead" style="color:var(--muted); margin-top:24px;">Първият етаж разполага с апартамент, трапезария и студио. На втория етаж има 4 стаи, всяка с баня и тоалетна.</p>
+
+          <div class="check-list">
+            <div class="check-item">Апартамент</div>
+            <div class="check-item">Студио</div>
+            <div class="check-item">4 стаи със спални</div>
+            <div class="check-item">Трапезария</div>
+            <div class="check-item">Басейн за възрастни</div>
+            <div class="check-item">Детски басейн</div>
+            <div class="check-item">Отопление</div>
+            <div class="check-item">Двор</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="about-cta">
+      <div class="wrap">
+        <div class="kicker">Резервации</div>
+        <h2 class="serif">Планирайте следващия си уикенд в Стара планина.</h2>
+        <p>Свържете се директно за свободни дати, условия и резервация на цялата къща.</p>
+        <a class="btn" href="tel:+359879255757">+359 87 925 5757</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap foot">
+      <div>
+        <strong>Къща за гости Свети Георги</strong>
+        <p>с. Тъжа · Стара планина</p>
+      </div>
+      <div>
+        <strong>Контакти</strong>
+        <a href="tel:+359879255757">+359 87 925 5757</a>
+        <a href="mailto:pochivka.svgeorgi@abv.bg">pochivka.svgeorgi@abv.bg</a>
+      </div>
+      <div>
+        <strong>Навигация</strong>
+        <a href="about.html">За къщата</a>
+        <a href="accommodation.html">Настаняване</a>
+        <a href="gallery.html">Галерия</a>
+        <a href="location.html">Местността</a>
+      </div>
+    </div>
+  </footer>
+
+<script>
+(function mobileMenuInit() {
+  const buttons = document.querySelectorAll('.menu-toggle');
+
+  buttons.forEach((button) => {
+    const nav = button.closest('.nav');
+    const menu = nav ? nav.querySelector('.menu') : null;
+
+    button.addEventListener('click', function () {
+      const isOpen = nav.classList.toggle('menu-open');
+      button.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+
+    if (menu) {
+      menu.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', function () {
+          nav.classList.remove('menu-open');
+          button.setAttribute('aria-expanded', 'false');
+        });
+      });
+    }
+  });
+})();
+</script>
+</body>
+</html>

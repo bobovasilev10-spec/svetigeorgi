@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="bg">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Благодарим Ви — Къща за гости Свети Георги</title>
+  <link rel="stylesheet" href="homepage.css">
+</head>
+<body>
+  <section class="cta" style="min-height:100svh;display:flex;align-items:center;">
+    <div class="wrap">
+      <div class="kicker">Запитване</div>
+      <h1 class="serif" style="margin:auto;max-width:850px;">Благодарим Ви!</h1>
+      <p class="lead" style="margin:24px auto 34px;max-width:680px;">Получихме Вашето запитване и ще се свържем с Вас за потвърждение.</p>
+      <a class="btn" href="index.html">Към началната страница</a>
+    </div>
+  </section>
+
+<script>
+(function mobileMenuInit() {
+  const buttons = document.querySelectorAll('.menu-toggle');
+
+  buttons.forEach((button) => {
+    const nav = button.closest('.nav');
+    const menu = nav ? nav.querySelector('.menu') : null;
+
+    button.addEventListener('click', function () {
+      const isOpen = nav.classList.toggle('menu-open');
+      button.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+
+    if (menu) {
+      menu.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', function () {
+          nav.classList.remove('menu-open');
+          button.setAttribute('aria-expanded', 'false');
+        });
+      });
+    }
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,1076 @@
+<!doctype html>
+<html lang="bg">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Местността — Къща за гости Свети Георги</title>
+  <meta name="description" content="Забележителности, маршрути и природа около село Тъжа и Къща за гости Свети Георги.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="homepage.css">
+
+  <style>
+    /* ==============================
+       Location page only
+       ============================== */
+
+    .page-hero {
+      min-height: 68vh;
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+      padding: 0;
+      background: var(--forest);
+      color: #fff;
+    }
+
+    .page-hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(8,18,13,.88), rgba(8,18,13,.36) 50%, rgba(8,18,13,.70)),
+        var(--hero-img) center / cover no-repeat;
+      transform: scale(1.03);
+    }
+
+    .page-hero::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0 0;
+      height: 48%;
+      background: linear-gradient(to top, rgba(0,0,0,.72), transparent);
+    }
+
+    .page-hero-inner {
+      position: relative;
+      z-index: 2;
+      padding: 190px 0 86px;
+    }
+
+    .page-hero h1 {
+      max-width: 980px;
+      margin: 0;
+      font-size: clamp(54px, 7.6vw, 112px);
+      line-height: .88;
+    }
+
+    .page-hero .lead {
+      max-width: 740px;
+      margin-top: 26px;
+      color: rgba(255,255,255,.82);
+      font-size: clamp(18px, 1.7vw, 23px);
+    }
+
+
+    /* Desktop hero alignment fix - matches inner pages */
+    .page-hero {
+      height: 690px;
+      min-height: 690px;
+      display: block;
+    }
+
+    .page-hero-inner {
+      position: absolute;
+      left: 50%;
+      top: 190px;
+      transform: translateX(-50%);
+      z-index: 2;
+
+      width: min(1180px, calc(100% - 42px));
+      padding: 0;
+    }
+
+    .page-hero h1 {
+      max-width: 900px;
+      margin: 0;
+
+      font-size: clamp(54px, 6.3vw, 96px);
+      line-height: .9;
+    }
+
+    .page-hero .lead {
+      max-width: 720px;
+      margin-top: 26px;
+    }
+
+    .location-intro {
+      padding: 104px 0 76px;
+      background: var(--paper);
+    }
+
+    .location-intro-grid {
+      display: grid;
+      grid-template-columns: .82fr 1.18fr;
+      gap: 78px;
+      align-items: end;
+    }
+
+    .location-intro p {
+      max-width: 760px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 19px;
+    }
+
+    .attractions {
+      padding: 28px 0 112px;
+      background: var(--paper);
+    }
+
+    .attraction-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 22px;
+    }
+
+    .attraction-card {
+      min-height: 420px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: flex-end;
+      padding: 34px;
+      background: var(--forest);
+      color: #fff;
+      box-shadow: 0 26px 70px rgba(13,29,22,.14);
+    }
+
+    .attraction-card.large {
+      grid-column: span 6;
+      min-height: 540px;
+    }
+
+    .attraction-card.medium {
+      grid-column: span 4;
+    }
+
+    .attraction-card.wide {
+      grid-column: span 8;
+    }
+
+    .attraction-card.small-wide {
+      grid-column: span 4;
+    }
+
+    .attraction-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: var(--img) center / cover no-repeat;
+      transition: .45s ease;
+    }
+
+    .attraction-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,.78), rgba(0,0,0,.12) 62%, rgba(0,0,0,.12));
+    }
+
+    .attraction-card:hover::before {
+      transform: scale(1.06);
+    }
+
+    .attraction-content {
+      position: relative;
+      z-index: 2;
+      max-width: 520px;
+    }
+
+    .attraction-number {
+      display: inline-block;
+      margin-bottom: 16px;
+      color: var(--gold-2);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+    }
+
+    .attraction-card h2,
+    .attraction-card h3 {
+      margin: 0;
+      color: #fff;
+      font-size: clamp(34px, 4vw, 58px);
+      line-height: .92;
+    }
+
+    .attraction-card p {
+      margin: 18px 0 0;
+      color: rgba(255,255,255,.76);
+      font-size: 16px;
+    }
+
+    .route-section {
+      padding: 112px 0;
+      background: var(--bg);
+    }
+
+    .route-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .route-image {
+      min-height: 560px;
+      background: url('images/img_3005.jpg') center / cover no-repeat;
+      box-shadow: var(--shadow);
+    }
+
+    .route-content p {
+      margin: 22px 0 0;
+      max-width: 620px;
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    .route-list {
+      display: grid;
+      gap: 1px;
+      margin-top: 36px;
+      background: var(--line);
+    }
+
+    .route-item {
+      display: grid;
+      grid-template-columns: 72px 1fr;
+      gap: 22px;
+      align-items: center;
+      padding: 24px;
+      background: var(--paper);
+    }
+
+    .route-item span {
+      color: var(--gold);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+
+    .route-item strong {
+      display: block;
+      color: var(--forest);
+      font-size: 18px;
+    }
+
+    .map-section {
+      padding: 112px 0;
+      background: var(--paper);
+    }
+
+    .map-panel {
+      display: grid;
+      grid-template-columns: .82fr 1.18fr;
+      gap: 0;
+      min-height: 520px;
+      background: var(--forest);
+      color: #fff;
+      box-shadow: 0 28px 80px rgba(13,29,22,.14);
+    }
+
+    .map-text {
+      padding: clamp(42px, 5vw, 70px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .map-text h2 {
+      color: #fff;
+    }
+
+    .map-text p {
+      margin: 22px 0 0;
+      color: rgba(255,255,255,.72);
+      font-size: 18px;
+    }
+
+    .location-title {
+      max-width: 520px;
+      font-size: clamp(54px, 4.8vw, 78px);
+      line-height: .92;
+      letter-spacing: -.02em;
+    }
+
+    .location-map {
+      position: relative;
+      overflow: hidden;
+      min-height: 620px;
+      background: var(--forest);
+    }
+
+    .location-map iframe {
+      width: 100%;
+      height: 100%;
+      min-height: 620px;
+      display: block;
+      border: 0;
+      filter: saturate(.86) contrast(.96);
+    }
+
+    .map-note {
+      position: absolute;
+      left: 30px;
+      bottom: 30px;
+      padding: 16px 20px;
+      background: rgba(255,250,243,.9);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      color: var(--forest);
+      box-shadow: 0 18px 45px rgba(0,0,0,.18);
+    }
+
+    .map-note strong {
+      display: block;
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .map-note a {
+      display: inline-block;
+      margin-top: 6px;
+      color: var(--gold);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .location-cta {
+      padding: 118px 0;
+      background:
+        linear-gradient(rgba(14,29,22,.84), rgba(14,29,22,.84)),
+        url('images/img_3005.jpg') center / cover no-repeat;
+      color: #fff;
+      text-align: center;
+    }
+
+    .location-cta h2 {
+      max-width: 820px;
+      margin: 0 auto;
+      color: #fff;
+    }
+
+    .location-cta p {
+      max-width: 720px;
+      margin: 26px auto 36px;
+      color: rgba(255,255,255,.78);
+      font-size: 20px;
+    }
+
+    @media (max-width: 980px) {
+      .location-intro-grid,
+      .route-layout,
+      .map-panel {
+        grid-template-columns: 1fr;
+      }
+
+      .attraction-card.large,
+      .attraction-card.medium,
+      .attraction-card.wide,
+      .attraction-card.small-wide {
+        grid-column: span 6;
+      }
+
+      .map-text {
+        order: 2;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .page-hero {
+        min-height: 62vh;
+      }
+
+      .page-hero-inner {
+        padding: 135px 0 60px;
+      }
+
+      .page-hero h1 {
+        font-size: 50px;
+      }
+
+      .location-intro,
+      .attractions,
+      .route-section,
+      .map-section,
+      .location-cta {
+        padding: 76px 0;
+      }
+
+      .attraction-card.large,
+      .attraction-card.medium,
+      .attraction-card.wide,
+      .attraction-card.small-wide {
+        grid-column: 1 / -1;
+        min-height: 360px;
+      }
+
+      .route-image,
+      .location-map {
+        min-height: 340px;
+      }
+
+      .route-item {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+
+
+      .page-hero {
+  height: 690px;
+  min-height: 690px;
+  display: block;
+}
+
+.page-hero-inner {
+  position: absolute;
+  left: 50%;
+  top: 190px;
+  transform: translateX(-50%);
+  z-index: 2;
+
+  width: min(1180px, calc(100% - 42px));
+  padding: 0;
+}
+
+.page-hero h1 {
+  max-width: 900px;
+  margin: 0;
+
+  font-size: clamp(54px, 6.3vw, 96px);
+  line-height: .9;
+}
+
+.page-hero .lead {
+  max-width: 720px;
+  margin-top: 26px;
+}
+    }
+  
+
+/* =========================================================
+   Mobile fixes - added inside page
+   Mobile-only overrides. Desktop layout remains unchanged.
+   ========================================================= */
+
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+@media (max-width: 980px) {
+  .topbar {
+    position: relative;
+    background: rgba(9, 18, 14, .96);
+  }
+
+  header {
+    position: absolute;
+    top: 46px;
+  }
+
+  .nav {
+    height: auto;
+    min-height: 86px;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 12px 0;
+  }
+
+  .logo img {
+    height: 54px;
+  }
+
+  .menu {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    gap: 12px;
+    overflow-x: auto;
+    padding: 8px 0 2px;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .menu::-webkit-scrollbar {
+    display: none;
+  }
+
+  .menu a {
+    flex: 0 0 auto;
+    white-space: nowrap;
+    padding: 8px 12px;
+    border: 1px solid rgba(255,255,255,.18);
+    border-radius: 999px;
+    background: rgba(255,255,255,.06);
+  }
+
+  .hero,
+  .page-hero {
+    height: auto !important;
+    min-height: auto !important;
+    display: block !important;
+    overflow: hidden !important;
+  }
+
+  .hero {
+    padding: 0 0 42px !important;
+  }
+
+  .hero-inner,
+  .page-hero-inner {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    transform: none !important;
+    width: min(1180px, calc(100% - 32px)) !important;
+    min-height: auto !important;
+    height: auto !important;
+    padding: 190px 0 56px !important;
+    margin: 0 auto !important;
+    display: block !important;
+  }
+
+  .hero-copy {
+    max-width: 100% !important;
+  }
+
+  .reservation-box {
+    position: relative !important;
+    right: auto !important;
+    top: auto !important;
+    width: 100% !important;
+    max-width: 680px !important;
+    margin: 30px 0 0 !important;
+  }
+
+  .reservation-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .section-head,
+  .intro-grid,
+  .story-grid,
+  .house-grid,
+  .intro-layout,
+  .contact-layout,
+  .inquiry-layout,
+  .gallery-intro-layout,
+  .strip-head,
+  .gallery-cta-panel,
+  .location-intro-grid,
+  .route-layout,
+  .map-panel,
+  .cta-panel {
+    grid-template-columns: 1fr !important;
+    gap: 34px !important;
+  }
+
+  .feature-grid,
+  .premium-grid,
+  .house-facts,
+  .featured-grid,
+  .masonry-gallery,
+  .attraction-grid,
+  .nearby,
+  .room-grid,
+  .amenities,
+  .facts,
+  .foot {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .attraction-card.large,
+  .attraction-card.medium,
+  .attraction-card.wide,
+  .attraction-card.small-wide {
+    grid-column: auto !important;
+    min-height: 380px !important;
+  }
+
+  .story-title {
+    position: static !important;
+  }
+
+  .contact-panel,
+  .map-panel,
+  .map-panel iframe,
+  .location-map,
+  .location-map iframe {
+    min-height: 460px !important;
+  }
+
+  .cta-panel-actions,
+  .gallery-cta-actions {
+    justify-content: flex-start !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .topbar {
+    display: none !important;
+  }
+
+  header {
+    top: 0 !important;
+  }
+
+  .wrap,
+  .hero-inner,
+  .page-hero-inner {
+    width: min(100% - 28px, 1180px) !important;
+  }
+
+  .nav {
+    min-height: 72px !important;
+    padding: 10px 0 !important;
+  }
+
+  .logo img {
+    height: 48px !important;
+  }
+
+  .menu {
+    gap: 8px !important;
+    padding-top: 6px !important;
+  }
+
+  .menu a {
+    padding: 7px 10px !important;
+    font-size: 10px !important;
+    letter-spacing: .09em !important;
+  }
+
+  .hero-inner,
+  .page-hero-inner {
+    padding: 132px 0 46px !important;
+  }
+
+  h1,
+  .page-hero h1 {
+    max-width: 100% !important;
+    font-size: clamp(42px, 13.5vw, 56px) !important;
+    line-height: .92 !important;
+  }
+
+  h2,
+  .contact-panel h2,
+  .whole-house h2,
+  .location-title {
+    font-size: clamp(36px, 11vw, 48px) !important;
+    line-height: .96 !important;
+  }
+
+  .lead,
+  .page-hero .lead,
+  .section-head p,
+  .intro-layout p,
+  .gallery-intro p,
+  .strip-head p,
+  .location-intro p,
+  .route-content p,
+  .contact-panel p,
+  .inquiry-copy p,
+  .whole-house p,
+  .cta-panel p,
+  .gallery-cta-panel p {
+    font-size: 16px !important;
+  }
+
+  section,
+  .about-section,
+  .page-intro,
+  .stay-options,
+  .amenity-strip,
+  .reservation-cta,
+  .contact-main,
+  .inquiry-section,
+  .contact-cta,
+  .gallery-intro,
+  .featured-gallery,
+  .gallery-strip,
+  .gallery-cta,
+  .location-intro,
+  .attractions,
+  .route-section,
+  .map-section,
+  .location-cta,
+  .whole-house,
+  .about-cta {
+    padding-top: 68px !important;
+    padding-bottom: 68px !important;
+  }
+
+  .reservation-box,
+  .text-card,
+  .story-card,
+  .stay-content,
+  .contact-form,
+  .contact-panel,
+  .cta-panel,
+  .gallery-cta-panel,
+  .map-text {
+    padding: 26px 20px !important;
+  }
+
+  .reservation-grid,
+  .form-grid,
+  .feature-grid,
+  .premium-grid,
+  .house-facts,
+  .featured-grid,
+  .masonry-gallery,
+  .attraction-grid,
+  .nearby,
+  .room-grid,
+  .amenities,
+  .facts,
+  .check-list,
+  .foot,
+  .gallery {
+    grid-template-columns: 1fr !important;
+  }
+
+  .reservation-bottom,
+  .form-bottom,
+  .cta-panel-actions,
+  .gallery-cta-actions,
+  .contact-actions,
+  .hero-actions {
+    align-items: stretch !important;
+    flex-direction: column !important;
+  }
+
+  .reservation-bottom button,
+  .form-bottom button,
+  .btn {
+    width: 100% !important;
+  }
+
+  .direct-phone,
+  .form-note {
+    text-align: left !important;
+  }
+
+  .photo-stack,
+  .house-photo-stack {
+    min-height: 360px !important;
+  }
+
+  .photo-main,
+  .house-photo-main {
+    width: 88% !important;
+    height: 310px !important;
+  }
+
+  .photo-small,
+  .house-photo-small {
+    width: 62% !important;
+    height: 180px !important;
+    border-width: 8px !important;
+  }
+
+  .story-visual,
+  .stay-image,
+  .route-image,
+  .location-map,
+  .location-map iframe,
+  .map-panel iframe,
+  .contact-panel,
+  .map-panel {
+    min-height: 320px !important;
+  }
+
+  .stay-image {
+    aspect-ratio: 4 / 3 !important;
+  }
+
+  .gallery,
+  .featured-grid,
+  .masonry-gallery {
+    grid-auto-rows: 250px !important;
+  }
+
+  .gallery div,
+  .gallery-tile,
+  .masonry-gallery .gallery-tile {
+    min-height: 250px !important;
+  }
+
+  .attraction-card.large,
+  .attraction-card.medium,
+  .attraction-card.wide,
+  .attraction-card.small-wide {
+    grid-column: 1 / -1 !important;
+    min-height: 320px !important;
+    padding: 24px !important;
+  }
+
+  .map-card,
+  .map-note {
+    position: static !important;
+    margin: 0 !important;
+  }
+
+  .map-card {
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+  }
+
+  .room-img {
+    height: 240px !important;
+  }
+
+  .room-body,
+  .feature-card,
+  .premium-box,
+  .house-fact,
+  .fact {
+    padding: 24px 20px !important;
+  }
+
+  .eyebrow {
+    gap: 10px !important;
+    font-size: 10px !important;
+    letter-spacing: .16em !important;
+  }
+
+  .eyebrow::before {
+    width: 36px !important;
+  }
+}
+
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="wrap">
+      <span>с. Тъжа · Стара планина</span>
+      <a href="tel:+359879255757">+359 87 925 5757</a>
+    </div>
+  </div>
+
+  <header>
+    <div class="wrap nav">
+      <a class="logo" href="index.html">
+        <img src="images/LOGO.webp" alt="Къща за гости Свети Георги">
+      </a>
+
+      <button class="menu-toggle" type="button" aria-label="Отвори меню" aria-expanded="false"><span></span><span></span><span></span></button>
+    <nav class="menu">
+        <a href="about.html">За къщата</a>
+        <a href="accommodation.html">Настаняване</a>
+        <a href="gallery.html">Галерия</a>
+        <a href="location.html">Местността</a>
+        <a href="contacts.html">Контакти</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero" style="--hero-img:url('images/img_3005.jpg')">
+      <div class="wrap page-hero-inner">
+        <div class="eyebrow">Местността</div>
+        <h1 class="serif">Село Тъжа и красотата на Балкана.</h1>
+        <p class="lead">Районът е подходящ за разходки, планински маршрути и спокойни дни сред природа, чист въздух и гледки към Стара планина.</p>
+      </div>
+    </section>
+
+    <section class="location-intro">
+      <div class="wrap location-intro-grid">
+        <div>
+          <div class="kicker">В близост</div>
+          <h2 class="serif">Място за движение, гледки и тишина.</h2>
+        </div>
+
+        <p>
+          Около село Тъжа се намират едни от най-характерните природни и културни места в района. Гостите могат да съчетаят спокойна почивка в къщата с разходки, кратки преходи и посещение на забележителности в подножието на Стара планина.
+        </p>
+      </div>
+    </section>
+
+    <section class="attractions">
+      <div class="wrap attraction-grid">
+
+        <article class="attraction-card large" style="--img:url('images/babsko.jpg')">
+          <div class="attraction-content">
+            <span class="attraction-number">01 · Природа</span>
+            <h2 class="serif">Бабско пръскало</h2>
+            <p>Една от красивите природни забележителности в района — подходяща за гости, които търсят маршрут сред зеленина и планинска атмосфера.</p>
+          </div>
+        </article>
+
+        <article class="attraction-card large" style="--img:url('images/triglav.jfif')">
+          <div class="attraction-content">
+            <span class="attraction-number">02 · Планина</span>
+            <h2 class="serif">Масив Триглав</h2>
+            <p>Емблематичен масив в Стара планина, който допълва усещането за простор, височина и истинска връзка с Балкана.</p>
+          </div>
+        </article>
+
+        <article class="attraction-card medium" style="--img:url('images/botev.jpg')">
+          <div class="attraction-content">
+            <span class="attraction-number">03</span>
+            <h3 class="serif">Връх Ботев</h3>
+            <p>Една от най-разпознаваемите планински точки в България.</p>
+          </div>
+        </article>
+
+        <article class="attraction-card medium" style="--img:url('images/muzei.webp')">
+          <div class="attraction-content">
+            <span class="attraction-number">04</span>
+            <h3 class="serif">Къща музей</h3>
+            <p>Културна спирка за гостите, които искат да опознаят района.</p>
+          </div>
+        </article>
+
+        <article class="attraction-card medium" style="--img:url('images/artgaleria.jpg')">
+          <div class="attraction-content">
+            <span class="attraction-number">05</span>
+            <h3 class="serif">Арт галерия</h3>
+            <p>Място за кратко посещение и различно преживяване извън природните маршрути.</p>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <section class="route-section">
+      <div class="wrap route-layout">
+        <div class="route-image"></div>
+
+        <div class="route-content">
+          <div class="kicker">Идеи за деня</div>
+          <h2 class="serif">Почивка, която може да бъде и преживяване.</h2>
+          <p>
+            Сутрините могат да започнат спокойно в двора, а денят да продължи с разходка, маршрут или посещение на някое от близките места. Районът позволява както активна почивка, така и напълно бавен уикенд.
+          </p>
+
+          <div class="route-list">
+            <div class="route-item">
+              <span>01</span>
+              <strong>Кратка разходка около селото и спокойна вечер в къщата.</strong>
+            </div>
+            <div class="route-item">
+              <span>02</span>
+              <strong>Посещение на природна забележителност и почивка край басейна.</strong>
+            </div>
+            <div class="route-item">
+              <span>03</span>
+              <strong>Планински маршрут за гостите, които искат по-активен ден.</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="map-section">
+      <div class="wrap">
+        <div class="map-panel">
+          <div class="map-text">
+            <div class="kicker">Локация</div>
+            <h2 class="serif location-title"></h2>
+            <p>
+              Къща за гости „Свети Георги“ се намира в живописното село Тъжа, в подножието на Стара планина — идеална отправна точка за разходки, планински преходи и посещение на едни от най-красивите природни забележителности в региона.
+            </p>
+            <p>
+              Само на кратко разстояние са Бабско пръскало, връх Ботев, масив Триглав и множество екопътеки. Локацията съчетава спокойствие, чист въздух и лесен достъп до основните туристически маршрути.
+            </p>
+            <div class="hero-actions">
+              <a class="btn" href="contacts.html">Попитай за маршрути</a>
+              <a class="btn outline" href="tel:+359879255757">Обади се</a>
+            </div>
+          </div>
+
+          <div class="location-map">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3480.5993181441154!2d25.081988076490113!3d42.65609161634738!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40a9a58145380391%3A0xd354e3b09efa3ad!2z0JrRitGJ0LAg0LfQsCDQs9C-0YHRgtC4IOKAntCh0LLQtdGC0Lgg0JPQtdC-0YDQs9C4Ig!5e1!3m2!1sbg!2sbg!4v1783410395306!5m2!1sbg!2sbg"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="strict-origin-when-cross-origin">
+            </iframe>
+            <div class="map-note">
+              <strong>Къща за гости Свети Георги</strong>
+              <a href="https://www.google.com/maps/search/?api=1&query=42.65609161634738,25.081988076490113" target="_blank" rel="noopener">Отвори в Google Maps</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="location-cta">
+      <div class="wrap">
+        <div class="kicker">Резервации</div>
+        <h2 class="serif">Комбинирайте спокойна почивка с разходки из Балкана.</h2>
+        <p>Свържете се за свободни дати и планирайте престой сред природа, простор и тишина.</p>
+        <a class="btn" href="contacts.html">Изпрати запитване</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap foot">
+      <div>
+        <strong>Къща за гости Свети Георги</strong>
+        <p>с. Тъжа · Стара планина</p>
+      </div>
+      <div>
+        <strong>Контакти</strong>
+        <a href="tel:+359879255757">+359 87 925 5757</a>
+        <a href="mailto:pochivka.svgeorgi@abv.bg">pochivka.svgeorgi@abv.bg</a>
+      </div>
+      <div>
+        <strong>Навигация</strong>
+        <a href="about.html">За къщата</a>
+        <a href="accommodation.html">Настаняване</a>
+        <a href="gallery.html">Галерия</a>
+        <a href="location.html">Местността</a>
+      </div>
+    </div>
+  </footer>
+
+<script>
+(function mobileMenuInit() {
+  const buttons = document.querySelectorAll('.menu-toggle');
+
+  buttons.forEach((button) => {
+    const nav = button.closest('.nav');
+    const menu = nav ? nav.querySelector('.menu') : null;
+
+    button.addEventListener('click', function () {
+      const isOpen = nav.classList.toggle('menu-open');
+      button.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+
+    if (menu) {
+      menu.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', function () {
+          nav.classList.remove('menu-open');
+          button.setAttribute('aria-expanded', 'false');
+        });
+      });
+    }
+  });
+})();
+</script>
+</body>
+</html>

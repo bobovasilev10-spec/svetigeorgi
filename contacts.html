@@ -1,0 +1,965 @@
+<!doctype html>
+<html lang="bg">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Контакти — Къща за гости Свети Георги</title>
+  <meta name="description" content="Контакти, локация и запитвания за резервация в Къща за гости Свети Георги, село Тъжа.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="homepage.css">
+
+  <style>
+    /* ==============================
+       Contacts page only
+       ============================== */
+
+    .page-hero {
+      height: 690px;
+      min-height: 690px;
+      position: relative;
+      display: block;
+      overflow: hidden;
+      padding: 0;
+      background: var(--forest);
+      color: #fff;
+    }
+
+    .page-hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(8,18,13,.88), rgba(8,18,13,.38) 50%, rgba(8,18,13,.72)),
+        var(--hero-img) center / cover no-repeat;
+      transform: scale(1.03);
+    }
+
+    .page-hero::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0 0;
+      height: 48%;
+      background: linear-gradient(to top, rgba(0,0,0,.72), transparent);
+    }
+
+    .page-hero-inner {
+      position: absolute;
+      left: 50%;
+      top: 190px;
+      transform: translateX(-50%);
+      z-index: 2;
+      width: min(1180px, calc(100% - 42px));
+      padding: 0;
+    }
+
+    .page-hero h1 {
+      max-width: 900px;
+      margin: 0;
+      font-size: clamp(54px, 6.3vw, 96px);
+      line-height: .9;
+    }
+
+    .page-hero .lead {
+      max-width: 720px;
+      margin-top: 26px;
+      color: rgba(255,255,255,.82);
+      font-size: clamp(18px, 1.7vw, 23px);
+    }
+
+    .contact-main {
+      padding: 112px 0;
+      background: var(--paper);
+    }
+
+    .contact-layout {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 34px;
+      align-items: stretch;
+    }
+
+    .contact-panel {
+      padding: clamp(38px, 5vw, 64px);
+      background: var(--forest);
+      color: #fff;
+      min-height: 620px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .contact-panel h2 {
+      color: #fff;
+      max-width: 520px;
+      font-size: clamp(48px, 5.4vw, 82px);
+      line-height: .92;
+    }
+
+    .contact-panel p {
+      margin: 22px 0 0;
+      max-width: 560px;
+      color: rgba(255,255,255,.72);
+      font-size: 18px;
+    }
+
+    .contact-methods {
+      display: grid;
+      gap: 1px;
+      margin-top: 44px;
+      background: rgba(255,255,255,.16);
+    }
+
+    .contact-method {
+      padding: 26px 28px;
+      background: rgba(255,255,255,.07);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .contact-method span {
+      display: block;
+      margin-bottom: 9px;
+      color: var(--gold-2);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+
+    .contact-method a,
+    .contact-method strong {
+      color: #fff;
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: clamp(28px, 2.6vw, 42px);
+      font-weight: 500;
+      line-height: 1;
+    }
+
+    .contact-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 34px;
+    }
+
+    .map-panel {
+      position: relative;
+      min-height: 620px;
+      overflow: hidden;
+      background: var(--bg);
+      box-shadow: 0 28px 80px rgba(13,29,22,.10);
+    }
+
+    .map-panel iframe {
+      width: 100%;
+      height: 100%;
+      min-height: 620px;
+      display: block;
+      border: 0;
+      filter: saturate(.86) contrast(.96);
+    }
+
+    .map-card {
+      position: absolute;
+      left: 28px;
+      right: 28px;
+      bottom: 28px;
+      padding: 24px 26px;
+      background: rgba(255,250,243,.88);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow: 0 22px 70px rgba(0,0,0,.20);
+    }
+
+    .map-card span {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--gold);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+
+    .map-card strong {
+      display: block;
+      color: var(--forest);
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 32px;
+      line-height: 1;
+    }
+
+    .map-card p {
+      margin: 10px 0 18px;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .inquiry-section {
+      padding: 0 0 112px;
+      background: var(--paper);
+    }
+
+    .inquiry-layout {
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      gap: 70px;
+      align-items: start;
+    }
+
+    .inquiry-copy h2 {
+      max-width: 580px;
+    }
+
+    .inquiry-copy p {
+      margin: 22px 0 0;
+      max-width: 540px;
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    .contact-form {
+      padding: clamp(34px, 5vw, 58px);
+      background: var(--bg);
+      box-shadow: 0 24px 70px rgba(13,29,22,.10);
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .contact-form label {
+      display: block;
+    }
+
+    .contact-form label.full {
+      grid-column: 1 / -1;
+    }
+
+    .contact-form span {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--gold);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      min-height: 48px;
+      padding: 0 16px;
+      border: 1px solid var(--line);
+      outline: none;
+      background: rgba(255,250,243,.88);
+      color: var(--text);
+      font-family: inherit;
+      font-size: 15px;
+    }
+
+    .contact-form textarea {
+      min-height: 128px;
+      padding: 16px;
+      resize: vertical;
+      line-height: 1.55;
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      border-color: rgba(189,140,74,.55);
+      box-shadow: 0 0 0 3px rgba(189,140,74,.12);
+    }
+
+    .form-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 22px;
+      margin-top: 24px;
+    }
+
+    .form-note {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.45;
+    }
+
+    .contact-cta {
+      padding: 110px 0;
+      background:
+        linear-gradient(rgba(14,29,22,.84), rgba(14,29,22,.84)),
+        url('images/img_3005.jpg') center / cover no-repeat;
+      color: #fff;
+      text-align: center;
+    }
+
+    .contact-cta h2 {
+      max-width: 840px;
+      margin: 0 auto;
+      color: #fff;
+    }
+
+    .contact-cta p {
+      max-width: 720px;
+      margin: 24px auto 34px;
+      color: rgba(255,255,255,.76);
+      font-size: 19px;
+    }
+
+    @media (max-width: 980px) {
+      .contact-layout,
+      .inquiry-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-panel,
+      .map-panel,
+      .map-panel iframe {
+        min-height: 520px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .page-hero {
+        height: 620px;
+        min-height: 620px;
+      }
+
+      .page-hero-inner {
+        top: 150px;
+      }
+
+      .page-hero h1 {
+        font-size: 50px;
+      }
+
+      .contact-main,
+      .inquiry-section,
+      .contact-cta {
+        padding: 76px 0;
+      }
+
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .form-bottom {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .map-card {
+        left: 18px;
+        right: 18px;
+        bottom: 18px;
+      }
+    }
+  
+
+/* =========================================================
+   Mobile fixes - added inside page
+   Mobile-only overrides. Desktop layout remains unchanged.
+   ========================================================= */
+
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+@media (max-width: 980px) {
+  .topbar {
+    position: relative;
+    background: rgba(9, 18, 14, .96);
+  }
+
+  header {
+    position: absolute;
+    top: 46px;
+  }
+
+  .nav {
+    height: auto;
+    min-height: 86px;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 12px 0;
+  }
+
+  .logo img {
+    height: 54px;
+  }
+
+  .menu {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    gap: 12px;
+    overflow-x: auto;
+    padding: 8px 0 2px;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .menu::-webkit-scrollbar {
+    display: none;
+  }
+
+  .menu a {
+    flex: 0 0 auto;
+    white-space: nowrap;
+    padding: 8px 12px;
+    border: 1px solid rgba(255,255,255,.18);
+    border-radius: 999px;
+    background: rgba(255,255,255,.06);
+  }
+
+  .hero,
+  .page-hero {
+    height: auto !important;
+    min-height: auto !important;
+    display: block !important;
+    overflow: hidden !important;
+  }
+
+  .hero {
+    padding: 0 0 42px !important;
+  }
+
+  .hero-inner,
+  .page-hero-inner {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    transform: none !important;
+    width: min(1180px, calc(100% - 32px)) !important;
+    min-height: auto !important;
+    height: auto !important;
+    padding: 190px 0 56px !important;
+    margin: 0 auto !important;
+    display: block !important;
+  }
+
+  .hero-copy {
+    max-width: 100% !important;
+  }
+
+  .reservation-box {
+    position: relative !important;
+    right: auto !important;
+    top: auto !important;
+    width: 100% !important;
+    max-width: 680px !important;
+    margin: 30px 0 0 !important;
+  }
+
+  .reservation-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .section-head,
+  .intro-grid,
+  .story-grid,
+  .house-grid,
+  .intro-layout,
+  .contact-layout,
+  .inquiry-layout,
+  .gallery-intro-layout,
+  .strip-head,
+  .gallery-cta-panel,
+  .location-intro-grid,
+  .route-layout,
+  .map-panel,
+  .cta-panel {
+    grid-template-columns: 1fr !important;
+    gap: 34px !important;
+  }
+
+  .feature-grid,
+  .premium-grid,
+  .house-facts,
+  .featured-grid,
+  .masonry-gallery,
+  .attraction-grid,
+  .nearby,
+  .room-grid,
+  .amenities,
+  .facts,
+  .foot {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .attraction-card.large,
+  .attraction-card.medium,
+  .attraction-card.wide,
+  .attraction-card.small-wide {
+    grid-column: auto !important;
+    min-height: 380px !important;
+  }
+
+  .story-title {
+    position: static !important;
+  }
+
+  .contact-panel,
+  .map-panel,
+  .map-panel iframe,
+  .location-map,
+  .location-map iframe {
+    min-height: 460px !important;
+  }
+
+  .cta-panel-actions,
+  .gallery-cta-actions {
+    justify-content: flex-start !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .topbar {
+    display: none !important;
+  }
+
+  header {
+    top: 0 !important;
+  }
+
+  .wrap,
+  .hero-inner,
+  .page-hero-inner {
+    width: min(100% - 28px, 1180px) !important;
+  }
+
+  .nav {
+    min-height: 72px !important;
+    padding: 10px 0 !important;
+  }
+
+  .logo img {
+    height: 48px !important;
+  }
+
+  .menu {
+    gap: 8px !important;
+    padding-top: 6px !important;
+  }
+
+  .menu a {
+    padding: 7px 10px !important;
+    font-size: 10px !important;
+    letter-spacing: .09em !important;
+  }
+
+  .hero-inner,
+  .page-hero-inner {
+    padding: 132px 0 46px !important;
+  }
+
+  h1,
+  .page-hero h1 {
+    max-width: 100% !important;
+    font-size: clamp(42px, 13.5vw, 56px) !important;
+    line-height: .92 !important;
+  }
+
+  h2,
+  .contact-panel h2,
+  .whole-house h2,
+  .location-title {
+    font-size: clamp(36px, 11vw, 48px) !important;
+    line-height: .96 !important;
+  }
+
+  .lead,
+  .page-hero .lead,
+  .section-head p,
+  .intro-layout p,
+  .gallery-intro p,
+  .strip-head p,
+  .location-intro p,
+  .route-content p,
+  .contact-panel p,
+  .inquiry-copy p,
+  .whole-house p,
+  .cta-panel p,
+  .gallery-cta-panel p {
+    font-size: 16px !important;
+  }
+
+  section,
+  .about-section,
+  .page-intro,
+  .stay-options,
+  .amenity-strip,
+  .reservation-cta,
+  .contact-main,
+  .inquiry-section,
+  .contact-cta,
+  .gallery-intro,
+  .featured-gallery,
+  .gallery-strip,
+  .gallery-cta,
+  .location-intro,
+  .attractions,
+  .route-section,
+  .map-section,
+  .location-cta,
+  .whole-house,
+  .about-cta {
+    padding-top: 68px !important;
+    padding-bottom: 68px !important;
+  }
+
+  .reservation-box,
+  .text-card,
+  .story-card,
+  .stay-content,
+  .contact-form,
+  .contact-panel,
+  .cta-panel,
+  .gallery-cta-panel,
+  .map-text {
+    padding: 26px 20px !important;
+  }
+
+  .reservation-grid,
+  .form-grid,
+  .feature-grid,
+  .premium-grid,
+  .house-facts,
+  .featured-grid,
+  .masonry-gallery,
+  .attraction-grid,
+  .nearby,
+  .room-grid,
+  .amenities,
+  .facts,
+  .check-list,
+  .foot,
+  .gallery {
+    grid-template-columns: 1fr !important;
+  }
+
+  .reservation-bottom,
+  .form-bottom,
+  .cta-panel-actions,
+  .gallery-cta-actions,
+  .contact-actions,
+  .hero-actions {
+    align-items: stretch !important;
+    flex-direction: column !important;
+  }
+
+  .reservation-bottom button,
+  .form-bottom button,
+  .btn {
+    width: 100% !important;
+  }
+
+  .direct-phone,
+  .form-note {
+    text-align: left !important;
+  }
+
+  .photo-stack,
+  .house-photo-stack {
+    min-height: 360px !important;
+  }
+
+  .photo-main,
+  .house-photo-main {
+    width: 88% !important;
+    height: 310px !important;
+  }
+
+  .photo-small,
+  .house-photo-small {
+    width: 62% !important;
+    height: 180px !important;
+    border-width: 8px !important;
+  }
+
+  .story-visual,
+  .stay-image,
+  .route-image,
+  .location-map,
+  .location-map iframe,
+  .map-panel iframe,
+  .contact-panel,
+  .map-panel {
+    min-height: 320px !important;
+  }
+
+  .stay-image {
+    aspect-ratio: 4 / 3 !important;
+  }
+
+  .gallery,
+  .featured-grid,
+  .masonry-gallery {
+    grid-auto-rows: 250px !important;
+  }
+
+  .gallery div,
+  .gallery-tile,
+  .masonry-gallery .gallery-tile {
+    min-height: 250px !important;
+  }
+
+  .attraction-card.large,
+  .attraction-card.medium,
+  .attraction-card.wide,
+  .attraction-card.small-wide {
+    grid-column: 1 / -1 !important;
+    min-height: 320px !important;
+    padding: 24px !important;
+  }
+
+  .map-card,
+  .map-note {
+    position: static !important;
+    margin: 0 !important;
+  }
+
+  .map-card {
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+  }
+
+  .room-img {
+    height: 240px !important;
+  }
+
+  .room-body,
+  .feature-card,
+  .premium-box,
+  .house-fact,
+  .fact {
+    padding: 24px 20px !important;
+  }
+
+  .eyebrow {
+    gap: 10px !important;
+    font-size: 10px !important;
+    letter-spacing: .16em !important;
+  }
+
+  .eyebrow::before {
+    width: 36px !important;
+  }
+}
+
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="wrap">
+      <span>с. Тъжа · Стара планина</span>
+      <a href="tel:+359879255757">+359 87 925 5757</a>
+    </div>
+  </div>
+
+  <header>
+    <div class="wrap nav">
+      <a class="logo" href="index.html">
+        <img src="images/LOGO.webp" alt="Къща за гости Свети Георги">
+      </a>
+      <button class="menu-toggle" type="button" aria-label="Отвори меню" aria-expanded="false"><span></span><span></span><span></span></button>
+    <nav class="menu">
+        <a href="about.html">За къщата</a>
+        <a href="accommodation.html">Настаняване</a>
+        <a href="gallery.html">Галерия</a>
+        <a href="location.html">Местността</a>
+        <a href="contacts.html">Контакти</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero" style="--hero-img:url('images/img_3005.jpg')">
+      <div class="page-hero-inner">
+        <div class="eyebrow">Контакти</div>
+        <h1 class="serif">Свържете се за свободни дати и резервации.</h1>
+        <p class="lead">Обадете се директно или изпратете запитване за цени, условия и свободни дати за престой в Къща за гости Свети Георги.</p>
+      </div>
+    </section>
+
+    <section class="contact-main">
+      <div class="wrap contact-layout">
+        <div class="contact-panel">
+          <div>
+            <div class="kicker">Връзка с нас</div>
+            <h2 class="serif"></h2>
+            <p>За свободни дати, капацитет и конкретни условия за наемане на отделно помещение или цялата къща, свържете се директно с нас.</p>
+
+            <div class="contact-methods">
+              <div class="contact-method">
+                <span>Телефон</span>
+                <a href="tel:+359879255757">+359 87 925 5757</a>
+              </div>
+              <div class="contact-method">
+                <span>Имейл</span>
+                <a href="mailto:pochivka.svgeorgi@abv.bg">pochivka.svgeorgi@abv.bg</a>
+              </div>
+              <div class="contact-method">
+                <span>Адрес</span>
+                <strong>с. Тъжа · Стара планина</strong>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-actions">
+            <a class="btn" href="tel:+359879255757">Обади се</a>
+            <a class="btn outline" href="mailto:pochivka.svgeorgi@abv.bg">Изпрати имейл</a>
+          </div>
+        </div>
+
+        <div class="map-panel">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3480.5993181441154!2d25.081988076490113!3d42.65609161634738!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40a9a58145380391%3A0xd354e3b09efa3ad!2z0JrRitGJ0LAg0LfQsCDQs9C-0YHRgtC4IOKAntCh0LLQtdGC0Lgi0JPQtdC-0YDQs9C4Ig!5e1!3m2!1sbg!2sbg!4v1783410395306!5m2!1sbg!2sbg" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+          <div class="map-card">
+            <span>Локация</span>
+            <strong>Къща за гости Свети Георги</strong>
+            <p>Намира се в село Тъжа, с удобен достъп до маршрути, водопади и забележителности в района.</p>
+            <a class="more" href="https://www.google.com/maps" target="_blank" rel="noopener">Отвори в Google Maps</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="inquiry-section" id="booking">
+      <div class="wrap inquiry-layout">
+        <div class="inquiry-copy">
+          <div class="kicker">Запитване</div>
+          <h2 class="serif">Изпратете ни желаните дати.</h2>
+          <p>Попълнете кратката форма и ще се свържем с Вас за потвърждение на свободните дати и условията за престой.</p>
+        </div>
+
+        <form class="contact-form" action="send-mail.php" method="POST">
+          
+          <input type="hidden" name="source" value="Контакти">
+<div class="form-grid">
+            <label>
+              <span>Вашето име</span>
+              <input type="text" name="name" placeholder="Име и фамилия" required>
+            </label>
+
+            <label>
+              <span>Телефон</span>
+              <input type="tel" name="phone" placeholder="0894 000 000" required>
+            </label>
+
+            <label>
+              <span>Настаняване</span>
+              <input type="date" name="checkin" required>
+            </label>
+
+            <label>
+              <span>Напускане</span>
+              <input type="date" name="checkout" required>
+            </label>
+
+            <label>
+              <span>Възрастни</span>
+              <input type="number" name="adults" min="1" value="2" required>
+            </label>
+
+            <label>
+              <span>Деца</span>
+              <input type="number" name="children" min="0" value="0">
+            </label>
+
+            <label class="full">
+              <span>Допълнителна информация</span>
+              <textarea name="message" placeholder="Например: интересувам се от цялата къща, брой нощувки, повод за събиране..."></textarea>
+            </label>
+          </div>
+
+          <div class="form-bottom">
+            <button class="btn dark" type="submit">Изпрати запитване</button>
+            <p class="form-note">Можете да резервирате и директно на телефон <strong>+359 87 925 5757</strong>.</p>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <section class="contact-cta">
+      <div class="wrap">
+        <div class="kicker">Резервации</div>
+        <h2 class="serif">Планирайте следващия си уикенд в Стара планина.</h2>
+        <p>Свържете се директно за свободни дати, условия и резервация на отделно помещение или цялата къща.</p>
+        <a class="btn" href="tel:+359879255757">+359 87 925 5757</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap foot">
+      <div>
+        <strong>Къща за гости Свети Георги</strong>
+        <p>с. Тъжа · Стара планина</p>
+      </div>
+      <div>
+        <strong>Контакти</strong>
+        <a href="tel:+359879255757">+359 87 925 5757</a>
+        <a href="mailto:pochivka.svgeorgi@abv.bg">pochivka.svgeorgi@abv.bg</a>
+      </div>
+      <div>
+        <strong>Навигация</strong>
+        <a href="about.html">За къщата</a>
+        <a href="accommodation.html">Настаняване</a>
+        <a href="gallery.html">Галерия</a>
+        <a href="location.html">Местността</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelectorAll('input[type="date"]').forEach(input => {
+      input.addEventListener('click', function () {
+        if (this.showPicker) this.showPicker();
+      });
+    });
+  </script>
+
+<script>
+(function mobileMenuInit() {
+  const buttons = document.querySelectorAll('.menu-toggle');
+
+  buttons.forEach((button) => {
+    const nav = button.closest('.nav');
+    const menu = nav ? nav.querySelector('.menu') : null;
+
+    button.addEventListener('click', function () {
+      const isOpen = nav.classList.toggle('menu-open');
+      button.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+
+    if (menu) {
+      menu.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', function () {
+          nav.classList.remove('menu-open');
+          button.setAttribute('aria-expanded', 'false');
+        });
+      });
+    }
+  });
+})();
+</script>
+</body>
+</html>
