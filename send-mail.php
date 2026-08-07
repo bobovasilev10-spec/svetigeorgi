@@ -9,7 +9,7 @@ function clean_input($value) {
     return trim(strip_tags($value ?? ""));
 }
 
-$to = "bobo_vas98@abv.bg";
+$to = "pochivka.svgeorgi@abv.bg";
 
 $source = clean_input($_POST["source"] ?? "Сайт");
 $name = clean_input($_POST["name"] ?? "");
@@ -40,8 +40,8 @@ if ($extra_message !== "") {
     $email_body .= "\nДопълнителна информация:\n" . $extra_message . "\n";
 }
 
-$headers = "From: website@kashta-svgeorgi.com\r\n";
-$headers .= "Reply-To: website@kashta-svgeorgi.com\r\n";
+$headers = "From: pochivka.svgeorgi@abv.bg\r\n";
+$headers .= "Reply-To: pochivka.svgeorgi@abv.bg\r\n";
 $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
 
 if (mail($to, $subject, $email_body, $headers)) {
