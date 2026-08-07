@@ -110,6 +110,163 @@
       background: var(--img) center / cover no-repeat;
     }
 
+    .stay-slider {
+      position: relative;
+      min-height: 360px;
+      aspect-ratio: 16 / 7;
+      overflow: hidden;
+      background: var(--forest);
+      cursor: pointer;
+    }
+
+    .stay-slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      visibility: hidden;
+      background: var(--img) center / cover no-repeat;
+      transform: scale(1.015);
+      transition: opacity .45s ease, visibility .45s ease, transform .7s ease;
+    }
+
+    .stay-slide.is-active {
+      opacity: 1;
+      visibility: visible;
+      transform: scale(1);
+    }
+
+    .stay-slider::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: linear-gradient(to top, rgba(0,0,0,.22), transparent 38%);
+    }
+
+    .slider-arrow {
+      position: absolute;
+      z-index: 3;
+      top: 50%;
+      width: 48px;
+      height: 48px;
+      border: 1px solid rgba(255,255,255,.55);
+      border-radius: 999px;
+      transform: translateY(-50%);
+      background: rgba(8,18,13,.36);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      color: #fff;
+      font-size: 26px;
+      line-height: 1;
+      cursor: pointer;
+      transition: .22s ease;
+    }
+
+    .slider-arrow:hover {
+      background: rgba(8,18,13,.62);
+      border-color: rgba(255,255,255,.85);
+    }
+
+    .slider-arrow.prev { left: 22px; }
+    .slider-arrow.next { right: 22px; }
+
+    .slider-counter {
+      position: absolute;
+      z-index: 3;
+      right: 24px;
+      bottom: 20px;
+      min-width: 58px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(8,18,13,.52);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-align: center;
+    }
+
+
+    /* Fullscreen gallery */
+    .stay-lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 500;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 28px;
+      background: rgba(5, 12, 9, .94);
+    }
+
+    .stay-lightbox.is-open {
+      display: flex;
+    }
+
+    .stay-lightbox-image {
+      width: min(92vw, 1500px);
+      height: min(86vh, 950px);
+      background-position: center;
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+
+    .stay-lightbox-close,
+    .stay-lightbox-arrow {
+      position: absolute;
+      z-index: 2;
+      width: 52px;
+      height: 52px;
+      border: 1px solid rgba(255,255,255,.42);
+      border-radius: 999px;
+      background: rgba(255,255,255,.08);
+      color: #fff;
+      cursor: pointer;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .stay-lightbox-close {
+      top: 24px;
+      right: 24px;
+      font-size: 30px;
+    }
+
+    .stay-lightbox-arrow {
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 30px;
+    }
+
+    .stay-lightbox-arrow.prev { left: 28px; }
+    .stay-lightbox-arrow.next { right: 28px; }
+
+    .stay-lightbox-counter {
+      position: absolute;
+      left: 50%;
+      bottom: 24px;
+      transform: translateX(-50%);
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.10);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .12em;
+    }
+
+    @media (max-width: 640px) {
+      .stay-lightbox { padding: 14px; }
+      .stay-lightbox-image { width: 100%; height: 78vh; }
+      .stay-lightbox-close { top: 14px; right: 14px; }
+      .stay-lightbox-arrow { width: 44px; height: 44px; }
+      .stay-lightbox-arrow.prev { left: 12px; }
+      .stay-lightbox-arrow.next { right: 12px; }
+      .stay-lightbox-counter { bottom: 14px; }
+    }
+
     .stay-content {
       padding: clamp(38px, 5vw, 72px);
       display: flex;
@@ -379,8 +536,22 @@
         padding: 76px 0;
       }
 
-      .stay-image {
+      .stay-image,
+      .stay-slider {
         min-height: 320px;
+      }
+
+      .slider-arrow {
+        width: 42px;
+        height: 42px;
+      }
+
+      .slider-arrow.prev { left: 14px; }
+      .slider-arrow.next { right: 14px; }
+
+      .slider-counter {
+        right: 14px;
+        bottom: 14px;
       }
 
       .stay-card {
@@ -428,410 +599,6 @@
   max-width: 720px;
   margin-top: 26px;
 }
-  
-
-/* =========================================================
-   Mobile fixes - added inside page
-   Mobile-only overrides. Desktop layout remains unchanged.
-   ========================================================= */
-
-html,
-body {
-  max-width: 100%;
-  overflow-x: hidden;
-}
-
-button,
-input,
-textarea,
-select {
-  font: inherit;
-}
-
-@media (max-width: 980px) {
-  .topbar {
-    position: relative;
-    background: rgba(9, 18, 14, .96);
-  }
-
-  header {
-    position: absolute;
-    top: 46px;
-  }
-
-  .nav {
-    height: auto;
-    min-height: 86px;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 12px;
-    padding: 12px 0;
-  }
-
-  .logo img {
-    height: 54px;
-  }
-
-  .menu {
-    width: 100%;
-    display: flex;
-    justify-content: flex-start;
-    gap: 12px;
-    overflow-x: auto;
-    padding: 8px 0 2px;
-    scrollbar-width: none;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  .menu::-webkit-scrollbar {
-    display: none;
-  }
-
-  .menu a {
-    flex: 0 0 auto;
-    white-space: nowrap;
-    padding: 8px 12px;
-    border: 1px solid rgba(255,255,255,.18);
-    border-radius: 999px;
-    background: rgba(255,255,255,.06);
-  }
-
-  .hero,
-  .page-hero {
-    height: auto !important;
-    min-height: auto !important;
-    display: block !important;
-    overflow: hidden !important;
-  }
-
-  .hero {
-    padding: 0 0 42px !important;
-  }
-
-  .hero-inner,
-  .page-hero-inner {
-    position: relative !important;
-    left: auto !important;
-    top: auto !important;
-    transform: none !important;
-    width: min(1180px, calc(100% - 32px)) !important;
-    min-height: auto !important;
-    height: auto !important;
-    padding: 190px 0 56px !important;
-    margin: 0 auto !important;
-    display: block !important;
-  }
-
-  .hero-copy {
-    max-width: 100% !important;
-  }
-
-  .reservation-box {
-    position: relative !important;
-    right: auto !important;
-    top: auto !important;
-    width: 100% !important;
-    max-width: 680px !important;
-    margin: 30px 0 0 !important;
-  }
-
-  .reservation-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-  }
-
-  .section-head,
-  .intro-grid,
-  .story-grid,
-  .house-grid,
-  .intro-layout,
-  .contact-layout,
-  .inquiry-layout,
-  .gallery-intro-layout,
-  .strip-head,
-  .gallery-cta-panel,
-  .location-intro-grid,
-  .route-layout,
-  .map-panel,
-  .cta-panel {
-    grid-template-columns: 1fr !important;
-    gap: 34px !important;
-  }
-
-  .feature-grid,
-  .premium-grid,
-  .house-facts,
-  .featured-grid,
-  .masonry-gallery,
-  .attraction-grid,
-  .nearby,
-  .room-grid,
-  .amenities,
-  .facts,
-  .foot {
-    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-  }
-
-  .attraction-card.large,
-  .attraction-card.medium,
-  .attraction-card.wide,
-  .attraction-card.small-wide {
-    grid-column: auto !important;
-    min-height: 380px !important;
-  }
-
-  .story-title {
-    position: static !important;
-  }
-
-  .contact-panel,
-  .map-panel,
-  .map-panel iframe,
-  .location-map,
-  .location-map iframe {
-    min-height: 460px !important;
-  }
-
-  .cta-panel-actions,
-  .gallery-cta-actions {
-    justify-content: flex-start !important;
-  }
-}
-
-@media (max-width: 640px) {
-  .topbar {
-    display: none !important;
-  }
-
-  header {
-    top: 0 !important;
-  }
-
-  .wrap,
-  .hero-inner,
-  .page-hero-inner {
-    width: min(100% - 28px, 1180px) !important;
-  }
-
-  .nav {
-    min-height: 72px !important;
-    padding: 10px 0 !important;
-  }
-
-  .logo img {
-    height: 48px !important;
-  }
-
-  .menu {
-    gap: 8px !important;
-    padding-top: 6px !important;
-  }
-
-  .menu a {
-    padding: 7px 10px !important;
-    font-size: 10px !important;
-    letter-spacing: .09em !important;
-  }
-
-  .hero-inner,
-  .page-hero-inner {
-    padding: 132px 0 46px !important;
-  }
-
-  h1,
-  .page-hero h1 {
-    max-width: 100% !important;
-    font-size: clamp(42px, 13.5vw, 56px) !important;
-    line-height: .92 !important;
-  }
-
-  h2,
-  .contact-panel h2,
-  .whole-house h2,
-  .location-title {
-    font-size: clamp(36px, 11vw, 48px) !important;
-    line-height: .96 !important;
-  }
-
-  .lead,
-  .page-hero .lead,
-  .section-head p,
-  .intro-layout p,
-  .gallery-intro p,
-  .strip-head p,
-  .location-intro p,
-  .route-content p,
-  .contact-panel p,
-  .inquiry-copy p,
-  .whole-house p,
-  .cta-panel p,
-  .gallery-cta-panel p {
-    font-size: 16px !important;
-  }
-
-  section,
-  .about-section,
-  .page-intro,
-  .stay-options,
-  .amenity-strip,
-  .reservation-cta,
-  .contact-main,
-  .inquiry-section,
-  .contact-cta,
-  .gallery-intro,
-  .featured-gallery,
-  .gallery-strip,
-  .gallery-cta,
-  .location-intro,
-  .attractions,
-  .route-section,
-  .map-section,
-  .location-cta,
-  .whole-house,
-  .about-cta {
-    padding-top: 68px !important;
-    padding-bottom: 68px !important;
-  }
-
-  .reservation-box,
-  .text-card,
-  .story-card,
-  .stay-content,
-  .contact-form,
-  .contact-panel,
-  .cta-panel,
-  .gallery-cta-panel,
-  .map-text {
-    padding: 26px 20px !important;
-  }
-
-  .reservation-grid,
-  .form-grid,
-  .feature-grid,
-  .premium-grid,
-  .house-facts,
-  .featured-grid,
-  .masonry-gallery,
-  .attraction-grid,
-  .nearby,
-  .room-grid,
-  .amenities,
-  .facts,
-  .check-list,
-  .foot,
-  .gallery {
-    grid-template-columns: 1fr !important;
-  }
-
-  .reservation-bottom,
-  .form-bottom,
-  .cta-panel-actions,
-  .gallery-cta-actions,
-  .contact-actions,
-  .hero-actions {
-    align-items: stretch !important;
-    flex-direction: column !important;
-  }
-
-  .reservation-bottom button,
-  .form-bottom button,
-  .btn {
-    width: 100% !important;
-  }
-
-  .direct-phone,
-  .form-note {
-    text-align: left !important;
-  }
-
-  .photo-stack,
-  .house-photo-stack {
-    min-height: 360px !important;
-  }
-
-  .photo-main,
-  .house-photo-main {
-    width: 88% !important;
-    height: 310px !important;
-  }
-
-  .photo-small,
-  .house-photo-small {
-    width: 62% !important;
-    height: 180px !important;
-    border-width: 8px !important;
-  }
-
-  .story-visual,
-  .stay-image,
-  .route-image,
-  .location-map,
-  .location-map iframe,
-  .map-panel iframe,
-  .contact-panel,
-  .map-panel {
-    min-height: 320px !important;
-  }
-
-  .stay-image {
-    aspect-ratio: 4 / 3 !important;
-  }
-
-  .gallery,
-  .featured-grid,
-  .masonry-gallery {
-    grid-auto-rows: 250px !important;
-  }
-
-  .gallery div,
-  .gallery-tile,
-  .masonry-gallery .gallery-tile {
-    min-height: 250px !important;
-  }
-
-  .attraction-card.large,
-  .attraction-card.medium,
-  .attraction-card.wide,
-  .attraction-card.small-wide {
-    grid-column: 1 / -1 !important;
-    min-height: 320px !important;
-    padding: 24px !important;
-  }
-
-  .map-card,
-  .map-note {
-    position: static !important;
-    margin: 0 !important;
-  }
-
-  .map-card {
-    left: auto !important;
-    right: auto !important;
-    bottom: auto !important;
-  }
-
-  .room-img {
-    height: 240px !important;
-  }
-
-  .room-body,
-  .feature-card,
-  .premium-box,
-  .house-fact,
-  .fact {
-    padding: 24px 20px !important;
-  }
-
-  .eyebrow {
-    gap: 10px !important;
-    font-size: 10px !important;
-    letter-spacing: .16em !important;
-  }
-
-  .eyebrow::before {
-    width: 36px !important;
-  }
-}
-
   </style>
 </head>
 <body>
@@ -847,8 +614,7 @@ select {
       <a class="logo" href="index.html">
         <img src="images/LOGO.webp" alt="Къща за гости Свети Георги">
       </a>
-      <button class="menu-toggle" type="button" aria-label="Отвори меню" aria-expanded="false"><span></span><span></span><span></span></button>
-    <nav class="menu">
+      <nav class="menu">
         <a href="about.html">За къщата</a>
         <a href="accommodation.html">Настаняване</a>
         <a href="gallery.html">Галерия</a>
@@ -883,7 +649,15 @@ select {
     <section class="stay-options">
       <div class="wrap">
         <article class="stay-card">
-          <div class="stay-image" style="--img:url('images/img_3005.jpg')"></div>
+          <div class="stay-slider" data-slider aria-label="Галерия Апартамент">
+            <div class="stay-slide is-active" style="--img:url('images/apart.jpg')"></div>
+            <div class="stay-slide" style="--img:url('images/img_3005.jpg')"></div>
+            <div class="stay-slide" style="--img:url('images/staq.jpg')"></div>
+            <div class="stay-slide" style="--img:url('images/staq1.jpg')"></div>
+            <button class="slider-arrow prev" type="button" aria-label="Предишна снимка">‹</button>
+            <button class="slider-arrow next" type="button" aria-label="Следваща снимка">›</button>
+            <div class="slider-counter"><span class="current">1</span> / <span class="total">4</span></div>
+          </div>
           <div class="stay-content">
             <div class="stay-number">01 · Апартамент</div>
             <h2 class="serif">Повече простор и лично удобство.</h2>
@@ -898,7 +672,15 @@ select {
         </article>
 
         <article class="stay-card">
-          <div class="stay-image" style="--img:url('images/img_3005.jpg')"></div>
+          <div class="stay-slider" data-slider aria-label="Галерия Студио">
+            <div class="stay-slide is-active" style="--img:url('images/staq.jpg')"></div>
+            <div class="stay-slide" style="--img:url('images/img_3005.jpg')"></div>
+            <div class="stay-slide" style="--img:url('images/apart.jpg')"></div>
+            <div class="stay-slide" style="--img:url('images/staq1.jpg')"></div>
+            <button class="slider-arrow prev" type="button" aria-label="Предишна снимка">‹</button>
+            <button class="slider-arrow next" type="button" aria-label="Следваща снимка">›</button>
+            <div class="slider-counter"><span class="current">1</span> / <span class="total">4</span></div>
+          </div>
           <div class="stay-content">
             <div class="stay-number">02 · Студио</div>
             <h2 class="serif">Тихо място за почивка сред природата.</h2>
@@ -913,7 +695,15 @@ select {
         </article>
 
         <article class="stay-card">
-          <div class="stay-image" style="--img:url('images/img_3005.jpg')"></div>
+          <div class="stay-slider" data-slider aria-label="Галерия Стаи">
+            <div class="stay-slide is-active" style="--img:url('images/staq1.jpg')"></div>
+            <div class="stay-slide" style="--img:url('images/img_3005.jpg')"></div>
+            <div class="stay-slide" style="--img:url('images/staq.jpg')"></div>
+            <div class="stay-slide" style="--img:url('images/apart.jpg')"></div>
+            <button class="slider-arrow prev" type="button" aria-label="Предишна снимка">‹</button>
+            <button class="slider-arrow next" type="button" aria-label="Следваща снимка">›</button>
+            <div class="slider-counter"><span class="current">1</span> / <span class="total">4</span></div>
+          </div>
           <div class="stay-content">
             <div class="stay-number">03 · Стаи</div>
             <h2 class="serif">Комфортни стаи с гледка към Балкана.</h2>
@@ -967,6 +757,14 @@ select {
     </section>
   </main>
 
+  <div class="stay-lightbox" id="stayLightbox" aria-hidden="true">
+    <button class="stay-lightbox-close" type="button" aria-label="Затвори">×</button>
+    <button class="stay-lightbox-arrow prev" type="button" aria-label="Предишна снимка">‹</button>
+    <div class="stay-lightbox-image" role="img" aria-label="Снимка от настаняването"></div>
+    <button class="stay-lightbox-arrow next" type="button" aria-label="Следваща снимка">›</button>
+    <div class="stay-lightbox-counter"><span class="current">1</span> / <span class="total">1</span></div>
+  </div>
+
   <footer>
     <div class="wrap foot">
       <div>
@@ -988,29 +786,121 @@ select {
     </div>
   </footer>
 
-<script>
-(function mobileMenuInit() {
-  const buttons = document.querySelectorAll('.menu-toggle');
+  <script>
+    const stayLightbox = document.getElementById('stayLightbox');
+    const lightboxImage = stayLightbox.querySelector('.stay-lightbox-image');
+    const lightboxClose = stayLightbox.querySelector('.stay-lightbox-close');
+    const lightboxPrev = stayLightbox.querySelector('.stay-lightbox-arrow.prev');
+    const lightboxNext = stayLightbox.querySelector('.stay-lightbox-arrow.next');
+    const lightboxCurrent = stayLightbox.querySelector('.stay-lightbox-counter .current');
+    const lightboxTotal = stayLightbox.querySelector('.stay-lightbox-counter .total');
 
-  buttons.forEach((button) => {
-    const nav = button.closest('.nav');
-    const menu = nav ? nav.querySelector('.menu') : null;
+    let activeGallery = [];
+    let activeLightboxIndex = 0;
+    let lightboxTouchStartX = 0;
 
-    button.addEventListener('click', function () {
-      const isOpen = nav.classList.toggle('menu-open');
-      button.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    function getSlideImage(slide) {
+      const inlineStyle = slide.getAttribute('style') || '';
+      const match = inlineStyle.match(/--img\s*:\s*url\(['"]?([^'")]+)['"]?\)/i);
+      return match ? match[1] : '';
+    }
+
+    function showLightboxImage(index) {
+      if (!activeGallery.length) return;
+      activeLightboxIndex = (index + activeGallery.length) % activeGallery.length;
+      lightboxImage.style.backgroundImage = `url('${activeGallery[activeLightboxIndex]}')`;
+      lightboxCurrent.textContent = activeLightboxIndex + 1;
+      lightboxTotal.textContent = activeGallery.length;
+    }
+
+    function openLightbox(images, index) {
+      activeGallery = images;
+      stayLightbox.classList.add('is-open');
+      stayLightbox.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      showLightboxImage(index);
+    }
+
+    function closeLightbox() {
+      stayLightbox.classList.remove('is-open');
+      stayLightbox.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      lightboxImage.style.backgroundImage = '';
+    }
+
+    document.querySelectorAll('[data-slider]').forEach(function(slider) {
+      const slides = Array.from(slider.querySelectorAll('.stay-slide'));
+      const prev = slider.querySelector('.slider-arrow.prev');
+      const next = slider.querySelector('.slider-arrow.next');
+      const current = slider.querySelector('.slider-counter .current');
+      const total = slider.querySelector('.slider-counter .total');
+      const galleryImages = slides.map(getSlideImage).filter(Boolean);
+      let index = 0;
+      let touchStartX = 0;
+
+      total.textContent = slides.length;
+
+      function showSlide(newIndex) {
+        index = (newIndex + slides.length) % slides.length;
+        slides.forEach(function(slide, i) {
+          slide.classList.toggle('is-active', i === index);
+        });
+        current.textContent = index + 1;
+      }
+
+      prev.addEventListener('click', function(event) {
+        event.stopPropagation();
+        showSlide(index - 1);
+      });
+
+      next.addEventListener('click', function(event) {
+        event.stopPropagation();
+        showSlide(index + 1);
+      });
+
+      slider.addEventListener('click', function(event) {
+        if (event.target.closest('.slider-arrow')) return;
+        openLightbox(galleryImages, index);
+      });
+
+      slider.addEventListener('touchstart', function(event) {
+        touchStartX = event.changedTouches[0].clientX;
+      }, { passive: true });
+
+      slider.addEventListener('touchend', function(event) {
+        const diff = event.changedTouches[0].clientX - touchStartX;
+        if (Math.abs(diff) > 45) {
+          showSlide(diff > 0 ? index - 1 : index + 1);
+        }
+      }, { passive: true });
     });
 
-    if (menu) {
-      menu.querySelectorAll('a').forEach((link) => {
-        link.addEventListener('click', function () {
-          nav.classList.remove('menu-open');
-          button.setAttribute('aria-expanded', 'false');
-        });
-      });
-    }
-  });
-})();
-</script>
+    lightboxPrev.addEventListener('click', function() { showLightboxImage(activeLightboxIndex - 1); });
+    lightboxNext.addEventListener('click', function() { showLightboxImage(activeLightboxIndex + 1); });
+    lightboxClose.addEventListener('click', closeLightbox);
+
+    stayLightbox.addEventListener('click', function(event) {
+      if (event.target === stayLightbox) closeLightbox();
+    });
+
+    stayLightbox.addEventListener('touchstart', function(event) {
+      lightboxTouchStartX = event.changedTouches[0].clientX;
+    }, { passive: true });
+
+    stayLightbox.addEventListener('touchend', function(event) {
+      const diff = event.changedTouches[0].clientX - lightboxTouchStartX;
+      if (Math.abs(diff) > 45) {
+        showLightboxImage(diff > 0 ? activeLightboxIndex - 1 : activeLightboxIndex + 1);
+      }
+    }, { passive: true });
+
+    document.addEventListener('keydown', function(event) {
+      if (!stayLightbox.classList.contains('is-open')) return;
+      if (event.key === 'Escape') closeLightbox();
+      if (event.key === 'ArrowLeft') showLightboxImage(activeLightboxIndex - 1);
+      if (event.key === 'ArrowRight') showLightboxImage(activeLightboxIndex + 1);
+    });
+  </script>
+
 </body>
 </html>
